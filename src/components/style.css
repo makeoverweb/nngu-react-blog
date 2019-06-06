@@ -1,0 +1,9 @@
+.main {
+    height: auto;
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    background-image: url(../assets/img/main-bg.jpg);
+}

@@ -1,0 +1,33 @@
+.content {
+    width: 100%;
+    height: 100%;
+
+    margin-bottom: 50px;
+}
+
+.content__wrap {
+    width: 100%;
+    max-width: 1024px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.content__left {
+    width: 68%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #fff;
+}
+
+.content__right {
+    width: 30%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+

@@ -1,0 +1,24 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo__image {
+    width: 100%;
+    height: 100%;
+}
+
+.logo__title {
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+.logo__text-white {
+    color: #B6BFBE;
+}
+
+.logo__text-blue {
+    margin-left: 10px;
+    color: #00E6EA;
+}

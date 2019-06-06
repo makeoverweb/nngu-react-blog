@@ -1,0 +1,117 @@
+.article {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    width: 600px;
+
+    border-bottom: 4px solid #dcdcdc;
+}
+
+.article__img {
+    width: 600px;
+    height: 400px;
+}
+
+.article__avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.article__like-img {
+    width: 30px;
+    height: 30px;
+}
+
+.article__post {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.article__author {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.article__admin {
+    margin-bottom: 5px;
+}
+
+.article__title {
+    font-size: 26px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.article__link-more {
+    font-size: 16px;
+    color: red;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.article__comment-link {
+    font-size: 16px;
+    font-style: italic;
+    cursor: pointer;
+}
+
+.article__button {
+    width: 100px;
+    height: 40px;
+    margin: 20px 0 20px;
+    font-size: 16px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #dcdcdc;
+}
+
+.article__footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.article__footer-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.article__views {
+    margin-right: 10px;
+}
+
+.article__footer-button {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.article__add-post {
+    background-color: #2adb7b;
+}
+
+.article__view-all {
+    background-color: #FAD97A;
+}
+
+.article__edit {
+    background-color: #2a9bdb;
+}
+
+.article__delete {
+    background-color: #dc294c;
+}
+
+.article__like {
+    display: flex;
+    align-items: center;
+}
+
+.article__like-img {
+    cursor: pointer;
+}
