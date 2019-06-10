@@ -1,67 +1,36 @@
-import React from 'react';
-import axios from 'axios';
+import React, {Fragment} from 'react';
+import User from './User';
+import { Link, Route } from 'react-router-dom';
 
 export default class UsersList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      users: [],
-      isLoading: false,
-    };
-  }
-
-  async fetchUsers() {
-    this.setState({
-      isLoading: true
-    });
-
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    try {
-      axios
-        .get('https://jsonplaceholder.typicode.com/users')
-        .then(response => {
-          if (response.status === 200) {
-            this.setState({
-              users: response.data,
-              isLoading: false
-            });
-          }
-        })
-
-    } catch (e) {
-      console.error(e.message);
-      this.setState({
-        isLoading: false,
-      });
-    }
-  }
-
-  componentDidMount() {
-    return this.fetchUsers();
   }
 
   render() {
     return (
       <div className={'users'}>
-        <h4>Пользователи</h4>
-        <ol>
-          {this.state.isLoading && <span>Загрузка...</span>}
+        <h3 className="users__title">Список пользователей</h3>
+        <ul className="users__list">
+          {this.props.isLoading && <span>Загрузка...</span>}
           {
-            this.state.users.map((user, i) => {
+            this.props.list.map((user, i) => {
               return (
-                <li key={i}>
-                  <p>{user.name}</p>
-                  <div>
-                    Контакты:
-                    <span>{user.email}</span>
-                    <span>{user.phone}</span>
-                  </div>
-
+                <li key={i} className="users__item">
+                  <User {...user} />
+                  <Link to={'/users/' + user.id} className = 'users__user'>
+                    Перейти в профиль
+                  </Link>
                 </li>
               );
             })
           }
-        </ol>
+        </ul>
+        <Route
+          path={'/users'}
+          exact
+          render={() => <Link to={'/'} className = "users__main">На главную</Link>}
+        />
       </div>
     )
   }

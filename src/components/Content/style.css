@@ -31,3 +31,6 @@
     box-sizing: border-box;
 }
 
+.active{
+    background-color: #fff;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import search from '../../assets/img/search.png';
+import { Route, NavLink } from "react-router-dom";
 
 export default class Navigation extends React.Component {
   constructor(props) {
@@ -10,13 +11,14 @@ export default class Navigation extends React.Component {
   getList() {
     return this.props.pages.map((obj, i) => {
       return (
-        <li className="nav__item" key={i}
+        <li
+          className="nav__item" key = {i}
         >
-          <a
-            className="nav__link"
-            onClick={() => this.props.setPageId(obj.pageId)}
+          <NavLink to={obj.path}
+                   exact={true}
+            activeClassName={"active"} className={"nav__link"}
           >{obj.name}
-          </a>
+          </NavLink>
         </li>
       )
     });
@@ -27,7 +29,7 @@ export default class Navigation extends React.Component {
       <div className="nav">
         <div className="nav__wrap">
           <ul className="nav__list">
-            {this.getList()}
+            <Route>{this.getList()}</Route>
           </ul>
           <span className="nav__search-wrap">
             <input type="search" className="nav__search" placeholder="Search"/>

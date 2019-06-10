@@ -3,6 +3,7 @@ import './style.css';
 import like from '../../assets/img/like.png';
 import dislike from '../../assets/img/dislike.png';
 import user from '../../assets/img/user.png';
+import { Link, Route } from 'react-router-dom';
 
 export default class Article extends React.Component {
 
@@ -21,7 +22,7 @@ export default class Article extends React.Component {
   }
 
   render() {
-    const { post, image} = this.props;
+    const { post, image, userId} = this.props;
 
     const text = this.state.isOpen && <p className="article__text">
       {post.body}<a className="article__link-more">   Read more...</a>
@@ -34,10 +35,9 @@ export default class Article extends React.Component {
         </a>
         <div className="article__wrap">
           <div className="article__post">
-
-            <a className="article__avatar-link">
+            <Link to={'/users/' + userId} className = "article__avatar-link">
               <img src={user} className="article__avatar"/>
-            </a>
+            </Link>
             <div className="article__author">
               <span className="article__admin">Name{post.id}</span>
               <span className="article__time">Date{post.id}</span>

@@ -1,43 +1,20 @@
 import React, {Fragment} from 'react';
-import axios from 'axios';
 import Article from './index';
 import './style.css';
 
 export default class ArticleList extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      getPost: [],
-      getImage: [],
-    }
-  }
-
-  componentDidMount() {
-
-    (async () => {
-      await Promise.all([
-        axios.get('https://jsonplaceholder.typicode.com/posts'),
-        axios.get('https://jsonplaceholder.typicode.com/photos')
-        ])
-        .then(axios.spread( (posts, images) => {
-          const getPost = posts.data.slice(0, 5);
-          this.setState({getPost});
-          const getImage = images.data.slice(0, 5);
-          this.setState({getImage})
-        }))
-        .catch(function (error) {
-          console.log(error);
-        });
-    })();
   }
 
   render() {
+    const getImages = this.props.image.map(i => i.url);
+    const getUsers = this.props.user.map(user => user.id);
 
-    const getImages= this.state.getImage.map(i => i.url);
-
-    const getPosts = this.state.getPost.map((post, index) =>
-      <Fragment key = { index }><Article post = {post} image = { getImages[index] }/></Fragment>);
+    const getPosts = this.props.post.map((post, index) =>
+      <Fragment key = { index }>
+        <Article post = {post} image = { getImages[index] } userId = {getUsers[index]}/>
+      </Fragment>);
 
     return (
       <Fragment>
