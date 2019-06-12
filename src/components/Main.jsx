@@ -15,7 +15,6 @@ export default class Main extends React.Component {
     this.pages = [
       { name: 'Статьи', path: '/' },
       { name: 'Пользователи', path: '/users' },
-      { name: 'Гайды', path: '/guides' },
       { name: 'Новости', path: '/news' },
       { name: 'Обо мне', path: '/about' }
     ];

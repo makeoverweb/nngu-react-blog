@@ -91,7 +91,10 @@ module.exports = {
       host: 'localhost',
       port: 3000,
       server: { baseDir: ['dist'] },
-      tunnel: true
+      tunnel: true,
+      historyApiFallback: true,
+      contentBase: './',
+      hot: true
     })
   ],
   resolve: {

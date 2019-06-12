@@ -30,7 +30,7 @@ export default class UserContainer extends React.Component {
           render={(props) => {
             const userId = +props.match.params.id;
             const selectedUser = this.props.users.find(user => user.id === userId);
-            return <User {...selectedUser} />;
+            return <User {...selectedUser}/>;
           }}
         />
       </Fragment>

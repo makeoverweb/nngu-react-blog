@@ -2,7 +2,8 @@ import React, {Fragment} from 'react';
 import './style.css';
 import axios from 'axios';
 import UserContainer from '../UserList/UserContainer';
-import Sidebar from '../Sidebar/index';
+import Sidebar from '../Sidebar/';
+import Article from '../Article/';
 import ArticleContainer from "../Article/ArticleContainer";
 import { Switch, Route } from 'react-router-dom';
 
@@ -45,17 +46,10 @@ export default class Content extends React.Component {
       return <div><h1>Какая то информация</h1></div>;
     };
 
-    const article = () => {
-      return <div><h1>Какая то информация</h1></div>;
-    };
-
     const news = () => {
       return <div><h1>News</h1></div>;
     };
 
-    const guides = () => {
-      return <div><h1>Гайды</h1></div>;
-    };
     return (
       <div className="content">
         <div className="content__wrap">
@@ -63,20 +57,23 @@ export default class Content extends React.Component {
             <Fragment>
               <Switch>
                 <Route
-                  path="/" exact render={(props)=>
+                  path="/" exact render={()=>
                   <ArticleContainer post = {this.state.getPost}
                                     image = {this.state.getImage}
                                     user = {this.state.getUsers}
-                                    {...props}/>}
+                  />}
                 />
+                {/*<Route path="/:id" render={()=>*/}
+                {/*  <Article post = {this.state.getPost}*/}
+                {/*           image = {this.state.getImage}*/}
+                {/*           user = {this.state.getUsers}*/}
+                {/*  />} />*/}
                 <Route
-                  path="/users"  render={(props)=>
-                  <UserContainer users = {this.state.getUsers} {...props}/>}
+                  path="/users"  render={()=>
+                  <UserContainer users = {this.state.getUsers}/>}
                 />
-                <Route path="/guides" component={guides} />
-                <Route path="/News" component={news} />
+                <Route path="/news" component={news} />
                 <Route path="/about" component={aboutMe} />
-                <Route path="/article/:id" component={article} />
               </Switch>
             </Fragment>
           </div>
