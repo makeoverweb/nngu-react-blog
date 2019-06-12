@@ -18,7 +18,7 @@ export default function Sidebar() {
         </li>
         <li className="sidebar__item">
           <a href="#" className="sidebar__link">
-            Ссылки <span className="sidebar__link-all">(11)</span>
+            Новости <span className="sidebar__link-all">(11)</span>
           </a>
         </li>
       </ul>

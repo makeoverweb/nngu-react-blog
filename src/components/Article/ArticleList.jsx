@@ -18,19 +18,19 @@ export default class ArticleList extends React.Component {
       isOpen: false,
       isCount: counter,
       isLike: dislike,
-      isCountLike: countLike
+      isCountLike: countLike,
+
     };
   }
 
   render() {
-    const userId = this.props.user.map(user => user.id);
     const getImages = this.props.image.map(i => i.url);
     const getUsers = this.props.user.map(i => i.name);
 
     const getPosts = this.props.post.map((post, index) =>
       <Fragment key = { index }>
         <div className="article">
-          <a href="#" className="article__img-link">
+          <a className="article__img-link">
             <img src={getImages[index]} className="article__img"/>
           </a>
           <div className="article__wrap">
@@ -44,18 +44,13 @@ export default class ArticleList extends React.Component {
               </div>
             </div>
             <h3 className="article__title">{post.title}</h3>
-            <button className="article__button" onClick={this.handleClick}>
-              Open
-            </button>
-            {this.state.isOpen && <p className="article__text">
-              {post.body}<Link to={'/' + userId[index]} className="article__link-more">   Read more...</Link>
-            </p>}
+            <p className="article__text">
+              {post.body}<Link to={'/articles/' + post.id} className="article__link-more">   Read more...</Link>
+            </p>
             <div className="article__footer">
               <div className="article__footer-wrap">
                 <span className="article__views">{this.state.isCount} views</span>
-                <span className="article__comment">
-                  <a className="article__comment-link">Write a comment</a>
-                </span></div>
+              </div>
               <div className="article__like">
                 <img src={this.state.isLike} className="article__like-img"
                   onClick={this.handleLike}
@@ -77,6 +72,7 @@ export default class ArticleList extends React.Component {
       </Fragment>
     )
   }
+
   handleClick = () => {
     this.setState({
       isOpen: !this.state.isOpen,

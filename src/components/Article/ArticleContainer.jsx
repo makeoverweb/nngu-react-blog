@@ -13,7 +13,7 @@ export default class ArticleContainer extends React.Component {
     return (
       <Fragment>
         <Route
-          path={'/'}
+          path={'/articles'}
           exact
           render={
             (props) =>
@@ -26,18 +26,22 @@ export default class ArticleContainer extends React.Component {
           }
         />
         <Route
-          path={'/:id'}
+          path={'/articles/:id'}
           exact
           render={(props) => {
-            console.log(props)
-            const postId = props.match.params.id;
+            const postId = +props.match.params.id;
             const selectedPost = this.props.post.find(post => post.id === postId);
             const selectedImage = this.props.image.find(image => image.id === postId);
             const selectedUser = this.props.user.find(user => user.id === postId);
-            return <div>123</div>;
+            return <Article
+              selectedImage={selectedImage}
+              selectedUser={selectedUser}
+              selectedPost={selectedPost}
+            />;
           }}
         />
       </Fragment>
+
     );
   }
 }

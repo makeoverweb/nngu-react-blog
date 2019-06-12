@@ -51,8 +51,10 @@
 .nav__item {
     display: inline-block;
     border-radius: 3px 3px 0 0;
+    opacity: .9;
     &:hover {
         background-color: #fff;
+        opacity: .9;
     }
 }
 
@@ -61,11 +63,8 @@
     padding: 10px 25px;
     margin: 0 auto;
     font-size: 20px;
-    color: #7D9794;
+    color: #011836;
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
-    &:hover {
-        color: #7D9794;
-    }
 }

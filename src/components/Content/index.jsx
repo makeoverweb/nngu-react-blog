@@ -6,6 +6,8 @@ import Sidebar from '../Sidebar/';
 import Article from '../Article/';
 import ArticleContainer from "../Article/ArticleContainer";
 import { Switch, Route } from 'react-router-dom';
+import Prime from '../Prime';
+import Error from '../Error';
 
 export default class Content extends React.Component {
   constructor(props) {
@@ -42,10 +44,6 @@ export default class Content extends React.Component {
 
   render() {
 
-    const aboutMe = () => {
-      return <div><h1>Какая то информация</h1></div>;
-    };
-
     const news = () => {
       return <div><h1>News</h1></div>;
     };
@@ -56,24 +54,20 @@ export default class Content extends React.Component {
           <div className="content__left">
             <Fragment>
               <Switch>
+                <Route path="/" exact component={Prime} />
                 <Route
-                  path="/" exact render={()=>
+                  path="/articles" render={()=>
                   <ArticleContainer post = {this.state.getPost}
                                     image = {this.state.getImage}
                                     user = {this.state.getUsers}
                   />}
                 />
-                {/*<Route path="/:id" render={()=>*/}
-                {/*  <Article post = {this.state.getPost}*/}
-                {/*           image = {this.state.getImage}*/}
-                {/*           user = {this.state.getUsers}*/}
-                {/*  />} />*/}
                 <Route
                   path="/users"  render={()=>
                   <UserContainer users = {this.state.getUsers}/>}
                 />
                 <Route path="/news" component={news} />
-                <Route path="/about" component={aboutMe} />
+                <Route path="/about" component={Error} />
               </Switch>
             </Fragment>
           </div>

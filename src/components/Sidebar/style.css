@@ -6,7 +6,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    background-color: #9dadab;
+    background-color: #B4D6DD;
 }
 
 .sidebar__title {
@@ -15,7 +15,7 @@
 
     border-top: 8px solid #8e9f9e;
     border-bottom: 8px solid #8e9f9e;
-    color: #fff;
+    color: #011836;
     font-size: 32px;
     text-transform: uppercase;
 }
@@ -29,9 +29,9 @@
 }
 
 .sidebar__link {
-    color: #fff;
+    color: #011836;
 }
 
 .sidebar__link-all {
-    color: #dcdcdc;
+    color: #464d51;
 }

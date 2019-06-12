@@ -46,13 +46,7 @@
 
 .article__link-more {
     font-size: 16px;
-    color: red;
-    font-style: italic;
-    cursor: pointer;
-}
-
-.article__comment-link {
-    font-size: 16px;
+    color: #4783d5;
     font-style: italic;
     cursor: pointer;
 }
@@ -69,6 +63,10 @@
     background-color: #dcdcdc;
 }
 
+.article__text {
+    margin-bottom: 20px;
+}
+
 .article__footer {
     display: flex;
     justify-content: space-between;
@@ -76,8 +74,8 @@
 
 .article__footer-wrap {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .article__views {
@@ -110,8 +108,33 @@
 .article__like {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .article__like-img {
     cursor: pointer;
+}
+
+.article__comment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.article__textarea {
+    resize: none;
+    margin: 20px 0 0;
+    padding: 10px;
+}
+
+.article__button--submit {
+    background-color: lightsalmon;
+}
+
+.articles__back {
+    display: block;
+    margin-bottom: 20px;
+
+    font-size: 16px;
+    color: #000;
 }

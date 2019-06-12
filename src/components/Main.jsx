@@ -13,7 +13,8 @@ export default class Main extends React.Component {
     super(props);
 
     this.pages = [
-      { name: 'Статьи', path: '/' },
+      { name: 'Главная', path: '/' },
+      { name: 'Статьи', path: '/articles' },
       { name: 'Пользователи', path: '/users' },
       { name: 'Новости', path: '/news' },
       { name: 'Обо мне', path: '/about' }

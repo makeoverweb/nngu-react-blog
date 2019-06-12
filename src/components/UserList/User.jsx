@@ -38,7 +38,7 @@ export default function User(user) {
       <Route
         path={'/users/:id'}
         exact
-        render={() => <Link to={'/users'} className={"user__back-list"}>Назад к списку</Link>}
+        render={() => <Link to={'/users'} className={"user__back-list"}>К списку пользователей</Link>}
       />
       <Route
         path={'/users/:id'}
