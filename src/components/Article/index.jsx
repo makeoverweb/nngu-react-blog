@@ -8,15 +8,8 @@ import { Link, Route } from 'react-router-dom';
 export default class Article extends React.Component {
 
   constructor(props) {
-    let countLike = 5;
 
     super(props);
-
-    this.state = {
-      isOpen: false,
-      isLike: dislike,
-      isCountLike: countLike
-    };
   }
 
   render() {
@@ -59,10 +52,9 @@ export default class Article extends React.Component {
                 </span>
             </div>
             <div className="article__like">
-              <img src={this.state.isLike} className="article__like-img"
-                onClick={this.handleLike}
+              <img src={this.props.likeStatus[this.props.selectedPost.id] ? dislike : like} className="article__like-img"
+                onClick={() => this.props.handleLike(this.props.selectedPost.id)}
               />
-              <span className="article__like-count">{this.state.isCountLike}</span>
             </div>
           </div>
           <div className="article__footer-button">
@@ -77,12 +69,5 @@ export default class Article extends React.Component {
          />
       </div>
     )
-  }
-
-  handleLike = () => {
-    this.setState ({
-      isLike: this.state.isLike === like ? dislike : like,
-      isCountLike: this.state.isLike === dislike ? `${++this.state.isCountLike}` : `${--this.state.isCountLike}`
-    })
   }
 };

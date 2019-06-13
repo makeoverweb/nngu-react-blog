@@ -6,21 +6,10 @@ import user from '../../assets/img/user.png';
 import { Link } from 'react-router-dom';
 
 export default class ArticleList extends React.Component {
+
   constructor(props) {
-    super(props);
-
-    let counter = 0;
-    let countLike = 5;
 
     super(props);
-
-    this.state = {
-      isOpen: false,
-      isCount: counter,
-      isLike: dislike,
-      isCountLike: countLike,
-
-    };
   }
 
   render() {
@@ -35,7 +24,7 @@ export default class ArticleList extends React.Component {
           </a>
           <div className="article__wrap">
             <div className="article__post">
-              <Link to={'/users/' + index} className = "article__avatar-link">
+              <Link to={'/users/' + post.id} className = "article__avatar-link">
                 <img src={user} className="article__avatar"/>
               </Link>
               <div className="article__author">
@@ -45,17 +34,19 @@ export default class ArticleList extends React.Component {
             </div>
             <h3 className="article__title">{post.title}</h3>
             <p className="article__text">
-              {post.body}<Link to={'/articles/' + post.id} className="article__link-more">   Read more...</Link>
+              {post.body}<Link to={'/articles/' + post.id}
+                               className="article__link-more"
+                         >   Read more...</Link>
             </p>
             <div className="article__footer">
               <div className="article__footer-wrap">
-                <span className="article__views">{this.state.isCount} views</span>
+                <span className="article__views">views</span>
               </div>
               <div className="article__like">
-                <img src={this.state.isLike} className="article__like-img"
-                  onClick={this.handleLike}
+                <img key = {post.id} src={this.props.likeStatus[post.id] ? dislike : like} className="article__like-img"
+                  onClick={() => this.props.handleLike(post.id)}
                 />
-                <span className="article__like-count">{this.state.isCountLike}</span>
+                <span className="article__like-count">{this.props.countStatus[post.id]}</span>
               </div>
             </div>
           </div>
@@ -71,19 +62,5 @@ export default class ArticleList extends React.Component {
         </div>
       </Fragment>
     )
-  }
-
-  handleClick = () => {
-    this.setState({
-      isOpen: !this.state.isOpen,
-      isCount: !this.state.isOpen ? `${++this.state.isCount}` : `${this.state.isCount}`
-    })
-  };
-
-  handleLike = () => {
-    this.setState ({
-      isLike: this.state.isLike === like ? dislike : like,
-      isCountLike: this.state.isLike === dislike ? `${++this.state.isCountLike}` : `${--this.state.isCountLike}`
-    })
   }
 }

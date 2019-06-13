@@ -7,7 +7,37 @@ import { Route } from 'react-router-dom';
 export default class ArticleContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      likeStatus: [true, true, true, true, true, true],
+      countStatus: [12, 4, 30, 8, 4, 21],
+      // viewStatus: [12, 4, 30, 8, 4, 21]
+    };
   }
+
+  handleLike = (i) => {
+    if(this.props.accessRight) {
+      const newStatus = this.state.likeStatus;
+    newStatus[i] = !this.state.likeStatus[i];
+
+    const newCount = this.state.countStatus;
+    newCount[i] = !this.state.likeStatus[i] ? `${++newCount[i]}` : `${--newCount[i]}`;
+
+    this.setState ({
+      likeStatus: newStatus,
+      countStatus: newCount
+    })
+    }
+  };
+
+  // handleView = (i) => {
+  //   const newView = this.state.viewStatus;
+  //   newView[i] = !this.state.viewStatus[i];
+  //
+  //   this.setState ({
+  //     viewStatus: newView
+  //   })
+  // };
 
   render() {
     return (
@@ -22,6 +52,12 @@ export default class ArticleContainer extends React.Component {
               post={this.props.post}
               image={this.props.image}
               user={this.props.user}
+              likeStatus={this.state.likeStatus}
+              countStatus={this.state.countStatus}
+              // viewStatus={this.state.viewStatus}
+              handleLike={this.handleLike}
+              // handleView={this.handleView}
+              accessRight={this.props.accessRight}
             />
           }
         />
@@ -37,6 +73,9 @@ export default class ArticleContainer extends React.Component {
               selectedImage={selectedImage}
               selectedUser={selectedUser}
               selectedPost={selectedPost}
+              likeStatus={this.state.likeStatus}
+              countStatus={this.state.countStatus}
+              handleLike={this.handleLike}
             />;
           }}
         />

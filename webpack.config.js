@@ -92,9 +92,9 @@ module.exports = {
       port: 3000,
       server: { baseDir: ['dist'] },
       tunnel: true,
-      historyApiFallback: true,
-      contentBase: './',
-      hot: true
+      // historyApiFallback: true,
+      // contentBase: './',
+      // hot: true
     })
   ],
   resolve: {
