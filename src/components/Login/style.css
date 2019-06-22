@@ -1,4 +1,4 @@
-.signUp {
+.signIn {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,11 +6,29 @@
     margin: 20px 0;
 }
 
-.signUp__login-wrap {
-    margin-bottom: 20px;
+.signIn__login-wrap {
+    margin-bottom: 10px;
 }
 
-.signUp__login {
+.signIn__login {
+    padding: 5px 10px;
+    margin-left: 10px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.signIn__inputError {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.signIn__password-wrap {
+    margin-bottom: 10px;
+}
+
+.signIn__password {
     padding: 5px 10px;
     margin-left: 10px;
 
@@ -20,36 +38,8 @@
     font-size: 16px;
 }
 
-.signUp__password-wrap {
-    margin-bottom: 20px;
-}
-
-.signUp__password {
-    padding: 5px 10px;
-    margin-left: 10px;
-
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    font-size: 16px;
-}
-
-.signUp__email-wrap {
-    margin-bottom: 20px;
-}
-
-.signUp__email {
-    padding: 5px 10px;
-    margin-left: 10px;
-
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    font-size: 16px;
-}
-
-.signUp__button {
-    width: 100px;
+.signIn__button {
+    width: 80px;
     height: 30px;
 
     -webkit-border-radius: 10px;
@@ -59,10 +49,6 @@
     background-color: #fff;
 }
 
-.signUp__back {
-    margin-top: 10px;
-}
-
-.signIn__inputError {
-    margin-top: 10px;
+.signIn__title {
+    margin-bottom: 10px;
 }

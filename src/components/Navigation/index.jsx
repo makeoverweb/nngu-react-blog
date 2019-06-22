@@ -2,8 +2,11 @@ import React from 'react';
 import './style.css';
 import search from '../../assets/img/search.png';
 import { Route, NavLink } from "react-router-dom";
+import { bindActionCreators } from 'redux';
+import actions from '../../actions/user';
+import { connect } from 'react-redux';
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -40,3 +43,15 @@ export default class Navigation extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  ...state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions:bindActionCreators(actions, dispatch)
+});
+
+const Wrapped = connect(mapStateToProps, mapDispatchToProps)(Navigation);
+
+export default Wrapped;

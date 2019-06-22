@@ -1,9 +1,12 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import mail from '../../assets/img/mail.png';
 import tel from '../../assets/img/phone.png';
+import { bindActionCreators } from 'redux';
+import actions from '../../actions/user';
+import { connect } from 'react-redux';
 
-export default class UsersList extends React.Component {
+class UsersList extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -13,9 +16,7 @@ export default class UsersList extends React.Component {
       <div className={'users'}>
         <h3 className="users__title">Список пользователей</h3>
         <ul className="users__list">
-          {this.props.isLoading && <span>Загрузка...</span>}
-          {
-            this.props.list.map((user, i) => {
+          {this.props.getUsers.map((user, i) => {
               return (
                 <li key={i} className="users__item">
                   <div className={"users__wrap"}>
@@ -24,10 +25,12 @@ export default class UsersList extends React.Component {
                       Контакты:
                       <span className="users__mail">
                         <img src={mail}  className="users__mail-img"/>
-                        {user.email}</span>
+                        {user.email}
+                      </span>
                       <span className="users__phone">
                         <img src={tel}  className="users__phone-img"/>
-                        {user.phone}</span>
+                        {user.phone}
+                      </span>
                     </div>
                   </div>
                   <Link to={'/users/' + user.id} className = 'users__user'>
@@ -47,3 +50,15 @@ export default class UsersList extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  ...state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions:bindActionCreators(actions, dispatch)
+});
+
+const Wrapped = connect(mapStateToProps, mapDispatchToProps)(UsersList);
+
+export default Wrapped;

@@ -3,8 +3,11 @@ import UsersList from './index';
 import User from './User';
 import './style.css';
 import { Route } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import actions from '../../actions/user';
+import { connect } from 'react-redux';
 
-export default class UserContainer extends React.Component {
+class UserContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -15,25 +18,25 @@ export default class UserContainer extends React.Component {
         <Route
           path={'/users'}
           exact
-          render={
-            (props) =>
-              <UsersList
-                {...props}
-                list={this.props.users}
-                isLoading={this.props.isLoading}
-              />
-          }
-        />
+          component={UsersList}/>
         <Route
           path={'/users/:id'}
           exact
-          render={(props) => {
-            const userId = +props.match.params.id;
-            const selectedUser = this.props.users.find(user => user.id === userId);
-            return <User {...selectedUser}/>;
-          }}
+          component={User}
         />
       </Fragment>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  ...state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions:bindActionCreators(actions, dispatch)
+});
+
+const Wrapped = connect(mapStateToProps, mapDispatchToProps)(UserContainer);
+
+export default Wrapped;

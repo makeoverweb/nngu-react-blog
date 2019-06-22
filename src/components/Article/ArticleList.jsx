@@ -4,8 +4,11 @@ import like from '../../assets/img/like.png';
 import dislike from '../../assets/img/dislike.png';
 import user from '../../assets/img/user.png';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import actions from '../../actions/user';
+import { connect } from 'react-redux';
 
-export default class ArticleList extends React.Component {
+class ArticleList extends React.Component {
 
   constructor(props) {
 
@@ -13,10 +16,11 @@ export default class ArticleList extends React.Component {
   }
 
   render() {
-    const getImages = this.props.image.map(i => i.url);
-    const getUsers = this.props.user.map(i => i.name);
+    console.log(this.props.countStatus[1].value)
+    const getImages = this.props.getImage.map(i => i.url);
+    const getUsers = this.props.getUsers.map(i => i.name);
 
-    const getPosts = this.props.post.map((post, index) =>
+    const getPosts = this.props.getPost.map((post, index) =>
       <Fragment key = { index }>
         <div className="article">
           <a className="article__img-link">
@@ -43,10 +47,10 @@ export default class ArticleList extends React.Component {
                 <span className="article__views">views</span>
               </div>
               <div className="article__like">
-                <img key = {post.id} src={this.props.likeStatus[post.id] ? dislike : like} className="article__like-img"
-                  onClick={() => this.props.handleLike(post.id)}
+                <img key = {post.id} src={this.props.likeStatus[post.id].name ? like : dislike} className="article__like-img"
+                  onClick={() => this.props.actions.likeChange(post.id, this.props.isLoggedIn, this.props.likeStatus, this.props.countStatus)}
                 />
-                <span className="article__like-count">{this.props.countStatus[post.id]}</span>
+                <span className="article__like-count">{this.props.countStatus[post.id].value}</span>
               </div>
             </div>
           </div>
@@ -64,3 +68,15 @@ export default class ArticleList extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  ...state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions:bindActionCreators(actions, dispatch)
+});
+
+const Wrapped = connect(mapStateToProps, mapDispatchToProps)(ArticleList);
+
+export default Wrapped;

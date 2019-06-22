@@ -115,10 +115,26 @@
     cursor: pointer;
 }
 
+.article__comments {
+    margin: 30px auto 10px;
+
+    text-align: center;
+}
+
 .article__comment {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.article__user-comment {
+    margin: 10px 0 30px;
+    padding: 10px;
+
+    border: 1px solid #1CC6EA;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .article__textarea {
@@ -128,6 +144,8 @@
 }
 
 .article__button--submit {
+    margin-left: 10px;
+
     background-color: lightsalmon;
 }
 

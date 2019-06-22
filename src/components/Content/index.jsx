@@ -23,17 +23,13 @@ export default class Content extends React.Component {
             <Fragment>
               <Switch>
                 <Route path="/" exact component={Prime} />
+                <Route path="/login" exact component={Prime} />
+                <Route path="/register" exact component={Prime} />
                 <Route
-                  path="/articles" render={()=>
-                  <ArticleContainer post = {this.props.post}
-                                    image = {this.props.image}
-                                    user = {this.props.user}
-                                    accessRight={this.props.accessRight}
-                  />}
+                  path="/articles" component={ArticleContainer}
                 />
                 <Route
-                  path="/users"  render={()=>
-                  <UserContainer users = {this.props.user}/>}
+                  path="/users"  component={UserContainer}
                 />
                 <Route path="/news" component={news} />
                 <Route path="/about" component={Error} />

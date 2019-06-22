@@ -3,41 +3,14 @@ import Article from './index';
 import './style.css';
 import ArticleList from "./ArticleList";
 import { Route } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import actions from '../../actions/user';
+import { connect } from 'react-redux';
 
-export default class ArticleContainer extends React.Component {
+class ArticleContainer extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      likeStatus: [true, true, true, true, true, true],
-      countStatus: [12, 4, 30, 8, 4, 21],
-      // viewStatus: [12, 4, 30, 8, 4, 21]
-    };
   }
-
-  handleLike = (i) => {
-    if(this.props.accessRight) {
-      const newStatus = this.state.likeStatus;
-    newStatus[i] = !this.state.likeStatus[i];
-
-    const newCount = this.state.countStatus;
-    newCount[i] = !this.state.likeStatus[i] ? `${++newCount[i]}` : `${--newCount[i]}`;
-
-    this.setState ({
-      likeStatus: newStatus,
-      countStatus: newCount
-    })
-    }
-  };
-
-  // handleView = (i) => {
-  //   const newView = this.state.viewStatus;
-  //   newView[i] = !this.state.viewStatus[i];
-  //
-  //   this.setState ({
-  //     viewStatus: newView
-  //   })
-  // };
 
   render() {
     return (
@@ -45,42 +18,27 @@ export default class ArticleContainer extends React.Component {
         <Route
           path={'/articles'}
           exact
-          render={
-            (props) =>
-            <ArticleList
-              {...props}
-              post={this.props.post}
-              image={this.props.image}
-              user={this.props.user}
-              likeStatus={this.state.likeStatus}
-              countStatus={this.state.countStatus}
-              // viewStatus={this.state.viewStatus}
-              handleLike={this.handleLike}
-              // handleView={this.handleView}
-              accessRight={this.props.accessRight}
-            />
-          }
+          component={ArticleList}
         />
         <Route
           path={'/articles/:id'}
           exact
-          render={(props) => {
-            const postId = +props.match.params.id;
-            const selectedPost = this.props.post.find(post => post.id === postId);
-            const selectedImage = this.props.image.find(image => image.id === postId);
-            const selectedUser = this.props.user.find(user => user.id === postId);
-            return <Article
-              selectedImage={selectedImage}
-              selectedUser={selectedUser}
-              selectedPost={selectedPost}
-              likeStatus={this.state.likeStatus}
-              countStatus={this.state.countStatus}
-              handleLike={this.handleLike}
-            />;
-          }}
+          component={Article}
         />
       </Fragment>
 
     );
   }
 }
+
+const mapStateToProps = state => ({
+  ...state.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions:bindActionCreators(actions, dispatch)
+});
+
+const Wrapped = connect(mapStateToProps, mapDispatchToProps)(ArticleContainer);
+
+export default Wrapped;
